@@ -9,7 +9,7 @@ import Foundation
 
 protocol DataProviderProtocol: AnyObject {
     func fetchRecentPhotos(request: PhotoRequest, completion: @escaping ((Result<PhotoResponse, NetworkError>) -> Void))
-    func searchPhotos(request: PhotoRequest, completion: @escaping ((Result<PhotoResponse, NetworkError>) -> Void))
+    func fetchSearchPhotos(request: PhotoRequest, completion: @escaping ((Result<PhotoResponse, NetworkError>) -> Void))
     func fetchPhotoInfo(request: PhotoInfoRequest, completion: @escaping ((Result<PhotoInfoResponse, NetworkError>) -> Void))
     func fetchUserProfile(request: UserProfileRequest, completion: @escaping ((Result<UserProfileResponse, NetworkError>) -> Void))
     func fetchUserPhoto(request: UserPhotoRequest, completion: @escaping ((Result<UserPhotoResponse, NetworkError>) -> Void))
@@ -22,7 +22,7 @@ public class DataProvider: DataProviderProtocol {
         API.Photo.recent(request: request).fetchResponse(completion: completion)
     }
     
-    func searchPhotos(request: PhotoRequest, completion: @escaping ((Result<PhotoResponse, NetworkError>) -> Void)) {
+    func fetchSearchPhotos(request: PhotoRequest, completion: @escaping ((Result<PhotoResponse, NetworkError>) -> Void)) {
         API.Photo.search(request: request).fetchResponse(completion: completion)
     }
     

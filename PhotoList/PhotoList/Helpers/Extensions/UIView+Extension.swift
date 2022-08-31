@@ -17,7 +17,7 @@ extension UIView {
     }
     
     func setRounded() {
-        layer.borderWidth = 2
+        layer.borderWidth = 3
         layer.masksToBounds = false
         layer.borderColor = UIColor.white.cgColor
         layer.cornerRadius = self.frame.height / 2

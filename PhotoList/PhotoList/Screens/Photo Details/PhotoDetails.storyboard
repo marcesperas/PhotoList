@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TO3-ZX-M5d">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="scrollableAxes" translatesAutoresizingMaskIntoConstraints="NO" id="TO3-ZX-M5d">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iUz-kI-3mX" userLabel="Container View">
@@ -139,7 +139,9 @@
                             <constraint firstItem="TO3-ZX-M5d" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="npr-2K-zZC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Photo Details" id="hqd-6e-9ZQ"/>
+                    <navigationItem key="navigationItem" title="Photo Details" id="hqd-6e-9ZQ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="qJc-wi-g79"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="dateLabel" destination="qLn-A0-jFa" id="ZYv-Rf-WvF"/>

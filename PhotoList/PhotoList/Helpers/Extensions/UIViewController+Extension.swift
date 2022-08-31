@@ -23,4 +23,8 @@ extension UIViewController {
         
         present(alertController, animated: true, completion: nil)
     }
+
+    func hidesBackButton() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
 }

@@ -21,7 +21,8 @@ class PhotoDetailsViewController: UIViewController, ViewModelBased {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = ""
+        hidesBackButton()
         configureUI()
         fetchPhotoInfo()
     }
@@ -31,6 +32,7 @@ class PhotoDetailsViewController: UIViewController, ViewModelBased {
     }
     
     public func showPhotoInfo() {
+        title = viewModel.realName.isEmpty ? "Photo Details" : viewModel.realName
         profileImageView.sd_setImage(with: viewModel.profileImageUrl, placeholderImage: UIImage(named: "ImageNotAvailable"))
         nameLabel.text = viewModel.realName
         photoImageView.sd_setImage(with: viewModel.photoImageUrl, placeholderImage: UIImage(named: "ImageNotAvailable"))

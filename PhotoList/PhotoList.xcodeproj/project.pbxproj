@@ -177,14 +177,14 @@
 		EDC7BA9B28BA253B007FDF57 /* PhotoList */ = {
 			isa = PBXGroup;
 			children = (
+				EDC7BAAA28BA253E007FDF57 /* Info.plist */,
+				EDC7BAA528BA253E007FDF57 /* Assets.xcassets */,
+				EDC7BA9C28BA253B007FDF57 /* AppDelegate.swift */,
+				EDC7BA9E28BA253B007FDF57 /* SceneDelegate.swift */,
 				EDC7BAF528BC01E5007FDF57 /* Constants.swift */,
 				EDC7BAF428BC01D2007FDF57 /* Helpers */,
 				EDC7BACC28BB7E0C007FDF57 /* Networking */,
 				EDC7BAFF28BD2CFE007FDF57 /* Screens */,
-				EDC7BA9C28BA253B007FDF57 /* AppDelegate.swift */,
-				EDC7BA9E28BA253B007FDF57 /* SceneDelegate.swift */,
-				EDC7BAA528BA253E007FDF57 /* Assets.xcassets */,
-				EDC7BAAA28BA253E007FDF57 /* Info.plist */,
 			);
 			path = PhotoList;
 			sourceTree = "<group>";

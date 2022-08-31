@@ -38,12 +38,12 @@ class IntegrationTests: XCTestCase {
         self.wait(for: [expectation], timeout: 30)
     }
     
-    func testSearchPhotos_ReturnsSuccess() {
+    func testFetchSearchPhotos_ReturnsSuccess() {
         let request: PhotoRequest = PhotoRequest(method: .search, searchText: "dog")
         
         let expectation = self.expectation(description: "searchPhotos Service")
         
-        sut.searchPhotos(request: request) { result in
+        sut.fetchSearchPhotos(request: request) { result in
             if case .success(let response) = result {
                 XCTAssertEqual(response.stat, "ok")
                 expectation.fulfill()

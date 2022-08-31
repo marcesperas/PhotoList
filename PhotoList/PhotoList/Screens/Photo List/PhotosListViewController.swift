@@ -16,13 +16,23 @@ protocol PhotoListViewControllerProtocol {
 class PhotoListViewController: UIViewController, ViewModelBased {
     @IBOutlet weak var tableView: UITableView!
     
+    let searchController: UISearchController = UISearchController()
+    
     var viewModel: PhotoListViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hidesBackButton()
+        configureSearchController()
         configureTableView()
         fetchRecentPhotos()
+    }
+    
+    private func configureSearchController() {
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     private func configureTableView() {
@@ -32,19 +42,47 @@ class PhotoListViewController: UIViewController, ViewModelBased {
     private func fetchRecentPhotos() {
         ActivityIndicator.start(for: view)
         viewModel.fetchRecentPhotos { [weak self] result in
-            
-                switch result {
-                    case .success():
-                        DispatchQueue.main.async {
-                            self?.tableView.reloadData()
-                        }
-                    case .failure(let error):
-                        DispatchQueue.main.async {
-                            self?.showAlert(message: error.description)
-                        }
+            switch result {
+                case .success():
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.showAlert(message: error.description)
+                    }
             }
             ActivityIndicator.stop()
         }
+    }
+    
+    private func fetchSearchPhotos() {
+        ActivityIndicator.start(for: view)
+        viewModel.fetchSearchPhotos { [weak self] result in
+            switch result {
+                case .success():
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.showAlert(message: error.description)
+                    }
+            }
+            ActivityIndicator.stop()
+            
+        }
+    }
+}
+
+// MARK: UISearchBarDelegate
+extension PhotoListViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        fetchSearchPhotos()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.searchText = searchBar.text
     }
 }
 

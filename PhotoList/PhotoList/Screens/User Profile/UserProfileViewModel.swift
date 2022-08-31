@@ -44,7 +44,7 @@ class UserProfileViewModel: UserProfileViewModelProtocol {
               let country = userProfile?.country,
               city != "",
               country != "" else {
-            return "Unknown"
+            return "Unspecified"
         }
         return "Leaves in \(city), \(country)"
     }
@@ -52,7 +52,7 @@ class UserProfileViewModel: UserProfileViewModelProtocol {
     var joinedDate: String {
         guard let joinedDateString = userProfile?.joinDate,
               let joinedDate: Date = Double(joinedDateString)?.unixDate() else {
-            return "Unknown"
+            return "Unspecified"
         }
         
         return "Joined \(joinedDate.timeAgoDisplay())"

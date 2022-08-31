@@ -15,8 +15,13 @@ class UserProfileViewController: UIViewController, ViewModelBased {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = ""
+        hidesBackButton()
         fetchUserData()
+    }
+    
+    private func loadUI() {
+        title = viewModel.fullname.isEmpty ? "Profile" : viewModel.fullname
     }
     
     private func configureTableView() {
@@ -30,6 +35,7 @@ class UserProfileViewController: UIViewController, ViewModelBased {
             switch result {
                 case .success():
                     self?.configureTableView()
+                    self?.loadUI()
                     self?.tableView.reloadData()
                 case .failure(let error):
                     self?.showAlert(message: error.description)
