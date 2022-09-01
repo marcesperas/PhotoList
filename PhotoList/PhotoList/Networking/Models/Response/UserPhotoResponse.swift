@@ -21,27 +21,10 @@ struct UserPhotoResponse: Codable {
 // MARK: - Photos
 struct UserPhotos: Codable {
     let page, pages, perpage, total: Int
-    let photoList: [UserPhoto]
+    let photoList: [Photo]
     
     enum CodingKeys: String, CodingKey {
         case page, pages, perpage, total
         case photoList = "photo"
-    }
-}
-
-// MARK: - Photo
-struct UserPhoto: Codable {
-    let id: String
-    let owner: String
-    let secret, server: String
-    let farm: Int
-    let title: String
-    let ispublic, isfriend, isfamily: Int
-}
-
-// MARK: - UserPhoto Extension
-extension UserPhoto {
-    var userPhotoUrl: URL {
-        return URL(string: "https://farm\(farm).static.flickr.com/\(server)/\(id)_\(secret).jpg")!
     }
 }

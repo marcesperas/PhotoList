@@ -12,11 +12,11 @@ class UserProfileTableViewCell: UITableViewCell, NibReusable{
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    var userPhoto: UserPhoto? {
+    var userPhoto: Photo? {
         didSet {
             resetValues()
             
-            guard let photoUrl = userPhoto?.userPhotoUrl,
+            guard let photoUrl = userPhoto?.photoUrl,
                   let description = userPhoto?.title else {
                 return
             }

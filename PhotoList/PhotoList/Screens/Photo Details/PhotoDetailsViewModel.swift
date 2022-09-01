@@ -27,7 +27,13 @@ class PhotoDetailsViewModel: PhotoDetailsViewModelProtocol {
     }
 
     var realName: String {
-        return photoInfo?.owner?.realname ?? ""
+        guard let realname = photoInfo?.owner?.realname else { return "" }
+        return realname
+    }
+    
+    var navBarTitle: String {
+        guard !realName.isEmpty else { return "Photo Details" }
+        return realName
     }
 
     var photoImageUrl: URL? {

@@ -67,7 +67,7 @@ class UserProfileViewModel: UserProfileViewModelProtocol {
         return userPhotos?.photoList.count ?? 0
     }
     
-    func userPhoto(at index: Int) -> UserPhoto? {
+    func userPhoto(at index: Int) -> Photo? {
         return userPhotos?.photoList[index]
     }
     

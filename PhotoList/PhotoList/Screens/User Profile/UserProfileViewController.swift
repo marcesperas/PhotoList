@@ -8,6 +8,10 @@
 import UIKit
 import Reusable
 
+protocol UserProfileViewControllerProtocol {
+    func goToPhotoDetailsViewController(with viewModel: PhotoDetailsViewModel)
+}
+
 class UserProfileViewController: UIViewController, ViewModelBased {
     @IBOutlet weak var tableView: UITableView!
     
@@ -84,11 +88,24 @@ extension UserProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 350
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let photo: Photo = viewModel.userPhoto(at: indexPath.row) else { return }
+        let viewModel: PhotoDetailsViewModel = PhotoDetailsViewModel(photo: photo)
+        goToPhotoDetailsViewController(with: viewModel)
+    }
 }
 
 // MARK: - StoryboardSceneBased
 extension UserProfileViewController: StoryboardSceneBased {
     static var sceneStoryboard: UIStoryboard {
         UIStoryboard(name: Constants.StoryboardName.userProfileViewController,bundle: nil)
+    }
+}
+
+extension UserProfileViewController: UserProfileViewControllerProtocol {
+    func goToPhotoDetailsViewController(with viewModel: PhotoDetailsViewModel) {
+        let viewController = PhotoDetailsViewController.instantiate(with: viewModel)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
