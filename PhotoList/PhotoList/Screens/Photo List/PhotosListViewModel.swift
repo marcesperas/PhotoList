@@ -35,6 +35,7 @@ class PhotoListViewModel: PhotoListViewModelProtocol {
         provider.fetchRecentPhotos(request: request) { [weak self] result in
             switch result {
                 case .success(let response):
+                    self?.photoList.removeAll()
                     self?.photoList = response.photos.photo
                     completion(.success(()))
                 case .failure(let error):
@@ -52,6 +53,7 @@ class PhotoListViewModel: PhotoListViewModelProtocol {
         provider.fetchSearchPhotos(request: request) { [weak self] result in
             switch result {
                 case .success(let response):
+                    self?.photoList.removeAll()
                     self?.photoList = response.photos.photo
                     completion(.success(()))
                 case .failure(let error):
