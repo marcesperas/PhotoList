@@ -33,10 +33,19 @@ class UserProfileViewModel: UserProfileViewModelProtocol {
     
     var fullname: String {
         guard let firstName = userProfile?.firstName,
-              let lastName = userProfile?.lastName else {
+              let lastName = userProfile?.lastName,
+              !firstName.isEmpty,
+              !lastName.isEmpty else {
             return ""
         }
         return "\(firstName) \(lastName)"
+    }
+    
+    var navBarTitle: String {
+        guard !fullname.isEmpty else {
+            return "Profile"
+        }
+        return fullname
     }
     
     var location: String {

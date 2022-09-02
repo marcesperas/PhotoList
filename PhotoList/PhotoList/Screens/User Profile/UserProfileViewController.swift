@@ -25,7 +25,7 @@ class UserProfileViewController: UIViewController, ViewModelBased {
     }
     
     private func loadUI() {
-        title = viewModel.fullname.isEmpty ? "Profile" : viewModel.fullname
+        title = viewModel.navBarTitle
     }
     
     private func configureTableView() {

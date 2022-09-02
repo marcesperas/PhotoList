@@ -70,7 +70,6 @@ class PhotoListViewController: UIViewController, ViewModelBased {
                     }
             }
             ActivityIndicator.stop()
-            
         }
     }
 }
